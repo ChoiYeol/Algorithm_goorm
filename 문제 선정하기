@@ -1,0 +1,33 @@
+// Run by Node.js
+
+const readline = require("readline");
+const rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout
+});
+
+let inputNum;
+let inputArr;
+let cnt = 0
+rl.on("line", function(line) {
+	if(cnt == 0){
+		inputNum = line
+	}else if(cnt ==1){
+		inputArr = line
+		
+		let split = inputArr.split(" ");
+		let set = new Set(split);
+		let arr = Array.from(set)
+		// let sortArr = arr.sort((a, b)=> a-b)
+		if(arr.length >= 3){
+			console.log("YES")
+		}else{
+			console.log("NO")
+		}
+		rl.close();
+	}
+	cnt++
+ 
+}).on("close", function() {
+	process.exit();
+});
